@@ -32,10 +32,3 @@ How to clone your project
 ```bash
 git clone https://github.com/rideragung/PAM-1
 ```
-
-
-How to clone your project
-
-```bash
-git clone https://github.com/rideragung/PAM-1
-```
