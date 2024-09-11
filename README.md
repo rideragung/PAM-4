@@ -30,5 +30,5 @@ Here you list all prerequisites necessary for running your project.
 How to clone your project
 
 ```bash
-git clone https://github.com/rideragung/PAM-1
+git clone https://github.com/rideragung/PAM-3
 ```
