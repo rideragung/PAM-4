@@ -12,8 +12,10 @@ import androidx.core.view.WindowInsetsCompat
 class MainActivity : AppCompatActivity() {
     private lateinit var editTextResult: EditText
     private var currentNumber = ""
-    private var firstNumber = 0
+    private var firstNumber = 0.0
     private var operation = ""
+    private var lastResult = 0.0
+    private var isNewOperation = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +28,6 @@ class MainActivity : AppCompatActivity() {
             R.id.button0, R.id.button1, R.id.button2, R.id.button3, R.id.button4,
             R.id.button5, R.id.button6, R.id.button7, R.id.button8, R.id.button9
         )
-
         for (buttonId in numberButtons) {
             findViewById<Button>(buttonId).setOnClickListener { numberClick(it as Button) }
         }
@@ -45,38 +46,54 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun numberClick(button: Button) {
+        if (isNewOperation) {
+            currentNumber = ""
+            isNewOperation = false
+        }
         currentNumber += button.text
         editTextResult.setText(currentNumber)
     }
 
     private fun operationClick(op: String) {
         if (currentNumber.isNotEmpty()) {
-            firstNumber = currentNumber.toInt()
+            if (operation.isNotEmpty()) {
+                calculateResult()
+            }
+            firstNumber = currentNumber.toDouble()
             currentNumber = ""
             operation = op
+            isNewOperation = true
+        } else if (lastResult != 0.0) {
+            firstNumber = lastResult
+            operation = op
+            isNewOperation = true
         }
     }
 
     private fun calculateResult() {
         if (currentNumber.isNotEmpty() && operation.isNotEmpty()) {
-            val secondNumber = currentNumber.toInt()
+            val secondNumber = currentNumber.toDouble()
             val result = when (operation) {
                 "+" -> firstNumber + secondNumber
                 "-" -> firstNumber - secondNumber
                 "*" -> firstNumber * secondNumber
-                "/" -> if (secondNumber != 0) firstNumber / secondNumber else Double.NaN
+                "/" -> if (secondNumber != 0.0) firstNumber / secondNumber else Double.NaN
                 else -> Double.NaN
             }
             editTextResult.setText(result.toString())
+            lastResult = result
             currentNumber = result.toString()
             operation = ""
+            isNewOperation = true
         }
     }
 
     private fun clearCalculator() {
         currentNumber = ""
-        firstNumber = 0
+        firstNumber = 0.0
+        lastResult = 0.0
         operation = ""
+        isNewOperation = true
         editTextResult.setText("")
     }
 }
