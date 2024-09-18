@@ -1,13 +1,13 @@
 
 
-<h1 align="center" style="font-weight: bold;">💻Tugas 3</h1>
+<h1 align="center" style="font-weight: bold;">💻Tugas 4</h1>
 
 
-<p align="center">buatlah aplikasi kalkulator sederhana, kalkulator berisi tombol 0 sampai 9 dan operasi perhitungan berupa: penjumlahan, pengurangan, perkalian, pembagian.</p>
+<p align="center">Buat aplikasi menampilkan dan menambah data static  menggunakan recycler view.</p>
 
 
 <p align="center">
-<a href="https://github.com/rideragung/PAM-3">📱 Bangkit Agung Laksono - 225150400111050</a>
+<a href="https://github.com/rideragung/PAM-4">📱 Bangkit Agung Laksono - 225150400111050</a>
 </p>
 
 <h2 id="technologies">💻 Technologies</h2>
@@ -30,5 +30,5 @@ Here you list all prerequisites necessary for running your project.
 How to clone your project
 
 ```bash
-git clone https://github.com/rideragung/PAM-3
+git clone https://github.com/rideragung/PAM-4
 ```
